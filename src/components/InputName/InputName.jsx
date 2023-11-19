@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Field, Form} from 'formik';
 import * as Yup from 'yup';
+import Notiflix from 'notiflix';
 import { ConteinerLabel,FormButton } from './InputName.styled';
 import { useDispatch, useSelector} from 'react-redux';
 import { servicePostContact } from 'serviceApi/serviceApi';
@@ -42,7 +43,7 @@ export const InputName = ({onCangeName}) =>{
             disPatch(servicePostContact(newContact))
             
         } else{
-            alert(`${value.name} is already in contacts`)
+          Notiflix.Notify.info(`${value.name} is already in contacts`);
         }
             action.resetForm()
         }}

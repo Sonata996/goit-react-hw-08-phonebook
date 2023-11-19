@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import {  Navigate, Route, Routes } from "react-router-dom";
 import { lazy, useEffect } from "react";
 import { Layout } from "components/Layout/Layout";
 import { PrivateRoute } from "components/PrivateRoute/PrivateRoute";
@@ -9,7 +9,7 @@ import { PublicRoute } from "components/PublicRoute/PublicRoute";
 import { Loader } from "components/Loader/Loader";
 
 
-const HomePage = lazy(()=> import('pages/HomePage'))
+const HomePage = lazy(()=> import('pages/HomePage/HomePage'))
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'))
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'))
 const ContactPage = lazy(() => import('pages/ContactPage/ContactsPage'))
@@ -39,7 +39,7 @@ export const App = () =>{
             element={<PrivateRoute redirectTo="login" component={<ContactPage />}
             />}/>
 
-            <Route path="*" element/>
+            <Route path="*" element={<Navigate to="/"/>}/>
           </Route>
         </Routes>
           );

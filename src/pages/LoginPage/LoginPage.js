@@ -30,7 +30,7 @@ const handlerSubmit =(evt) =>{
                 </ConteinetInput>
                 <ConteinetInput>
                     <label htmlFor="password">Password: </label>
-                    <FormInput id="password" type="text" name="password" />
+                    <FormInput id="password" type="password" name="password" />
                 </ConteinetInput>
 
                 <FormButton type="submit" onChange={()=>{

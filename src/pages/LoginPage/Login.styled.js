@@ -31,6 +31,7 @@ border-left:none ;
 border-right:none ;
 `
 export const FormButton = styled.button`
+cursor: pointer;
 margin-left: auto;
 margin-right: auto;
 width: 9em;
