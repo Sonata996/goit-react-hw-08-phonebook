@@ -4,7 +4,7 @@ import { Layout } from "components/Layout/Layout";
 import { PrivateRoute } from "components/PrivateRoute/PrivateRoute";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshUser } from "redux/authorization/operation";
-import { isRefreshing } from "redux/authorization/selectors";
+import { isLoggedIn, isRefreshing } from "redux/authorization/selectors";
 import { PublicRoute } from "components/PublicRoute/PublicRoute";
 import { Loader } from "components/Loader/Loader";
 
@@ -17,7 +17,10 @@ const ContactPage = lazy(() => import('pages/ContactPage/ContactsPage'))
 export const App = () =>{
   const dispatch = useDispatch()
   const getIsRefreshing = useSelector(isRefreshing)
-  
+  const getIsLoggedIn = useSelector(isLoggedIn)
+
+
+
   useEffect(() =>{
     dispatch(refreshUser())
   },[dispatch])
@@ -39,7 +42,7 @@ export const App = () =>{
             element={<PrivateRoute redirectTo="login" component={<ContactPage />}
             />}/>
 
-            <Route path="*" element={<Navigate to="/"/>}/>
+            <Route path="*" element={<Navigate to={getIsLoggedIn ? '/': "/contacts"}/>}/>
           </Route>
         </Routes>
           );
