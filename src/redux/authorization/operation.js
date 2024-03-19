@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://sonata996.github.io/beckend-phonebook/';
+axios.defaults.baseURL = 'http://localhost:3000';
 
 const setAuthHeaders = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -12,11 +12,11 @@ const changeAuthHeader = () => {
 };
 
 export const serviceRegister = createAsyncThunk(
-  'user/singup',
+  'user/signup',
   async (values, thunkAPI) => {
     try {
       const postUser = await axios.post('/users/signup', values);
-      console.log(values);
+      console.log(postUser.data);
       setAuthHeaders(postUser.data.token);
       return postUser.data;
     } catch (error) {

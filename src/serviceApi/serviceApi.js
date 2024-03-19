@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://sonata996.github.io/beckend-phonebook/';
+axios.defaults.baseURL = 'http://localhost:3000';
 
 export const serviceGetContactsApi = createAsyncThunk(
   'contact/fetchAll',
