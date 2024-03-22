@@ -14,7 +14,10 @@ export const UserMenu = () => {
         Welome
         <SpanEmail> {getEmail.email}</SpanEmail>
       </p>
-      <LogoutButton type="button" onClick={() => dispatch(serviceLogUot())}>
+      <LogoutButton
+        type="button"
+        onClick={() => dispatch(serviceLogUot(getEmail))}
+      >
         Logout
       </LogoutButton>
     </ConteinetMenu>
