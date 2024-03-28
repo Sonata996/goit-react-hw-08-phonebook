@@ -29,7 +29,6 @@ export const serviceLogIn = createAsyncThunk(
   'user/login',
   async (values, thunkAPI) => {
     try {
-      console.log(axios.defaults.headers.common);
       const logInUser = await axios.post('/users/login', values);
       setAuthHeaders(logInUser.data.token);
       return logInUser.data;
@@ -44,6 +43,7 @@ export const serviceLogUot = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       await axios.post('/users/logout', user);
+      changeAuthHeader();
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
