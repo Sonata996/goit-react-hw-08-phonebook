@@ -4,11 +4,15 @@ import {
   ElemList,
   DeletButton,
   ConteineInfo,
+  BorderIcon,
 } from './contacts.styled';
 import { useSelector } from 'react-redux';
 import { FaUser } from 'react-icons/fa';
 import { getContact, getFilter } from 'redux/tasks/selectors';
-import { serviceDeletContact } from 'serviceApi/serviceApi';
+import {
+  serviceDeletContact,
+  serviceGetContactsApi,
+} from 'serviceApi/serviceApi';
 
 export const Contacts = () => {
   const contacts = useSelector(getContact);
@@ -23,13 +27,18 @@ export const Contacts = () => {
       {contactsList.map(elem => (
         <ElemList key={elem._id}>
           <ConteineInfo>
-            <FaUser size="3em" />
+            <BorderIcon>
+              <FaUser size="40px" />
+            </BorderIcon>
+
             <p>{elem.name}:</p>
             <p>{elem.phone}</p>
           </ConteineInfo>
           <DeletButton
             onClick={() => {
-              disPatch(serviceDeletContact(elem.id));
+              console.log(elem);
+              disPatch(serviceDeletContact(elem._id));
+              disPatch(serviceGetContactsApi());
             }}
           >
             Delete

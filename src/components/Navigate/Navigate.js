@@ -1,32 +1,22 @@
 import { useSelector } from 'react-redux';
 import { isLoggedIn } from 'redux/authorization/selectors.js';
-import { ElemListNav, ListNav, Nav } from './Navigate.styled.js';
+import { ElemListNav, ContainerNav, Nav } from './Navigate.styled.js';
 import { UserMenu } from 'components/UserMenu/UserMenu.js';
 
 export const Navigate = () => {
   const getIsLoggedIn = useSelector(isLoggedIn);
   return (
     <Nav>
-      <ListNav>
-        <li>
-          <ElemListNav to="/">Home</ElemListNav>
-        </li>
+      <ContainerNav>
+        <ElemListNav to="/">Home</ElemListNav>
         {getIsLoggedIn ? null : (
-          <li>
-            <ElemListNav to="/register">Register</ElemListNav>
-          </li>
+          <ElemListNav to="/register">Register</ElemListNav>
         )}
-        {getIsLoggedIn ? null : (
-          <li>
-            <ElemListNav to="/login">Login</ElemListNav>
-          </li>
-        )}
+        {getIsLoggedIn ? null : <ElemListNav to="/login">Login</ElemListNav>}
         {getIsLoggedIn ? (
-          <li>
-            <ElemListNav to="/contacts">Contacts</ElemListNav>
-          </li>
+          <ElemListNav to="/contacts">Contacts</ElemListNav>
         ) : null}
-      </ListNav>
+      </ContainerNav>
 
       <UserMenu />
     </Nav>
