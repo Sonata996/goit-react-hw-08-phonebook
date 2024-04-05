@@ -9,7 +9,7 @@ import {
 const AuthorizationSlice = createSlice({
   name: 'authorization',
   initialState: {
-    user: { name: null, email: null },
+    user: { name: null, email: null, avatarURL: null },
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
