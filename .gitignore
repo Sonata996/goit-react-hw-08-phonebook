@@ -1,5 +1,7 @@
 build/
 node_modules/
+frontend/.github
+frontend/node_modules/
 .env
 .idea
 .github
