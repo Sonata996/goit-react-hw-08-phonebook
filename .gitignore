@@ -1,8 +1,7 @@
 build/
 node_modules/
-backend/
-frontend/.github
 frontend/node_modules/
+frontend/.github
 .env
 .idea
 .github
