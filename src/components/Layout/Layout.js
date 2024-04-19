@@ -5,7 +5,7 @@ import { Header } from './Layout.styled.js';
 
 export const Layout = () => {
   return (
-    <div>
+    <>
       <Header>
         <Navigate />
       </Header>
@@ -13,6 +13,6 @@ export const Layout = () => {
       <Suspense fallback={'LOADING PAGE...'}>
         <Outlet />
       </Suspense>
-    </div>
+    </>
   );
 };

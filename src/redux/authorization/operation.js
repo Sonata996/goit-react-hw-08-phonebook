@@ -33,7 +33,8 @@ export const serviceLogIn = createAsyncThunk(
       setAuthHeaders(logInUser.data.token);
       return logInUser.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      console.log(error);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );

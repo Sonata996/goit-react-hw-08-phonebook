@@ -1,10 +1,10 @@
-import HttpError from "../helpers/HttpError.js";
-import Contact from "../schemas/Contact.js";
+import HttpError from '../helpers/HttpError.js';
+import Contact from '../schemas/Contact.js';
 
 const getAllContacts = async (req, res, next) => {
   const { _id: id } = req.user;
   const resul = await Contact.find({ owner: id });
-  console.log(resul);
+
   res.json(resul);
 };
 
@@ -13,7 +13,7 @@ const getbyId = async (req, res, next) => {
   const { _id: id } = req.user;
   const result = await Contact.findOne({ _id: contactId, owner: id });
   if (!result) {
-    return next(HttpError(404, "Not found"));
+    return next(HttpError(404, 'Not found'));
   }
   res.json(result);
 };
@@ -24,7 +24,7 @@ const addContacts = async (req, res) => {
   res.status(201).json(result);
 };
 
-const deletContact = async (req, res) => {
+const deletContact = async (req, res, next) => {
   const { contactId } = req.params;
   const { _id: ownerId } = req.user;
 
@@ -34,9 +34,9 @@ const deletContact = async (req, res) => {
   });
 
   if (!result) {
-    return next(HttpError(404, "Not found"));
+    return next(HttpError(404, 'Not found'));
   }
-  res.json({ message: "contact deleted" });
+  res.json({ message: 'contact deleted' });
 };
 
 export default {

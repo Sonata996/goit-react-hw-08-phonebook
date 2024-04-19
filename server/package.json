@@ -2,7 +2,6 @@
   "name": "goit-react-hw-08-phonebook",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://Sonata996.github.io/goit-react-hw-08-phonebook",
   "main": "server.js",
   "type": "module",
   "scripts": {

@@ -3,20 +3,28 @@ import { serviceLogIn } from 'redux/authorization/operation';
 import {
   ConteinerForm,
   ConteinetInput,
+  ErrorMessage,
   FormButton,
   FormInput,
   FormLogin,
 } from './Login.styled';
-import { token } from 'redux/authorization/selectors';
+import { errorMessage, token } from 'redux/authorization/selectors';
+import { useEffect } from 'react';
+import { nullificationError } from 'redux/authorization/slice';
 
 export default function LoginPage() {
   const dispatch = useDispatch();
   const tokenUser = useSelector(token);
+  const errorForm = useSelector(errorMessage);
+
+  useEffect(() => {
+    dispatch(nullificationError());
+  }, []);
 
   const handlerSubmit = evt => {
     evt.preventDefault();
     const form = evt.currentTarget;
-    console.dir(form);
+
     dispatch(
       serviceLogIn({
         email: form.elements.email.value,
@@ -37,6 +45,8 @@ export default function LoginPage() {
           <label htmlFor="password">Password: </label>
           <FormInput id="password" type="password" name="password" />
         </ConteinetInput>
+
+        {errorForm && <ErrorMessage>{errorForm}</ErrorMessage>}
 
         <FormButton type="submit" onChange={() => {}}>
           Submit

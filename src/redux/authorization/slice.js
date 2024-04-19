@@ -13,6 +13,12 @@ const AuthorizationSlice = createSlice({
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
+    errorMessage: null,
+  },
+  reducers: {
+    nullificationError: (state, action) => {
+      state.errorMessage = null;
+    },
   },
   extraReducers: builder => {
     builder
@@ -25,6 +31,10 @@ const AuthorizationSlice = createSlice({
         state.token = action.payload.token;
         state.user = action.payload.user;
         state.isLoggedIn = true;
+        state.errorMessage = null;
+      })
+      .addCase(serviceLogIn.rejected, (state, action) => {
+        state.errorMessage = action.payload;
       })
       .addCase(serviceLogUot.fulfilled, (state, action) => {
         state.user = { name: null, email: null };
@@ -44,4 +54,5 @@ const AuthorizationSlice = createSlice({
   },
 });
 
+export const { nullificationError } = AuthorizationSlice.actions;
 export const AuthorizationReducer = AuthorizationSlice.reducer;

@@ -31,6 +31,7 @@ export const FormInput = styled.input`
 `;
 export const FormButton = styled.button`
   cursor: pointer;
+  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   width: 9em;
@@ -59,4 +60,11 @@ export const FormButton = styled.button`
     display: block;
     z-index: -1;
   }
+`;
+
+export const ErrorMessage = styled.div`
+  position: absolute;
+  top: 190px;
+  font-size: 10px;
+  color: #c62828;
 `;
