@@ -27,6 +27,9 @@ const AuthorizationSlice = createSlice({
         state.user = action.payload.user;
         state.isLoggedIn = true;
       })
+      .addCase(serviceRegister.rejected, (state, action) => {
+        state.errorMessage = action.payload;
+      })
       .addCase(serviceLogIn.fulfilled, (state, action) => {
         state.token = action.payload.token;
         state.user = action.payload.user;
@@ -37,7 +40,8 @@ const AuthorizationSlice = createSlice({
         state.errorMessage = action.payload;
       })
       .addCase(serviceLogUot.fulfilled, (state, action) => {
-        state.user = { name: null, email: null };
+        state.user = { name: null, email: null, avatarURL: null };
+        state.token = null;
         state.isLoggedIn = false;
       })
       .addCase(refreshUser.pending, (state, action) => {

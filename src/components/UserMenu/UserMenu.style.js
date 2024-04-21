@@ -8,7 +8,7 @@ export const ConteinetMenu = styled.div`
 `;
 
 export const SpanEmail = styled.span`
-  color: orange;
+  color: rgb(191 119 19);
 `;
 
 export const LogoutButton = styled.button`

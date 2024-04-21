@@ -16,11 +16,10 @@ export const serviceRegister = createAsyncThunk(
   async (values, thunkAPI) => {
     try {
       const postUser = await axios.post('/users/signup', values);
-      // console.log(postUser.data);
       setAuthHeaders(postUser.data.token);
       return postUser.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -33,7 +32,6 @@ export const serviceLogIn = createAsyncThunk(
       setAuthHeaders(logInUser.data.token);
       return logInUser.data;
     } catch (error) {
-      console.log(error);
       return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
@@ -46,7 +44,7 @@ export const serviceLogUot = createAsyncThunk(
       await axios.post('/users/logout', user);
       changeAuthHeader();
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -63,7 +61,7 @@ export const refreshUser = createAsyncThunk(
       const getInfo = await axios.get('/users/current');
       return getInfo.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );

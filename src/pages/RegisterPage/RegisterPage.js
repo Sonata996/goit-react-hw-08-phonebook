@@ -1,15 +1,20 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { serviceRegister } from '../../redux/authorization/operation';
 import {
   ConteinerForm,
   ConteinetInput,
+  ErrorMessage,
   FormButton,
   FormInput,
   FormRegister,
 } from './Register.styled';
+import { useEffect } from 'react';
+import { errorMessage } from 'redux/authorization/selectors';
+import { nullificationError } from 'redux/authorization/slice';
 
 export default function RegisterPage() {
   const dispatch = useDispatch();
+  const errorForm = useSelector(errorMessage);
 
   const handlerSubmit = evt => {
     evt.preventDefault();
@@ -23,6 +28,10 @@ export default function RegisterPage() {
       })
     );
   };
+
+  useEffect(() => {
+    dispatch(nullificationError());
+  }, []);
 
   return (
     <ConteinerForm>
@@ -39,7 +48,7 @@ export default function RegisterPage() {
           <label htmlFor="password">Password: </label>
           <FormInput id="password" type="password" name="password" />
         </ConteinetInput>
-
+        {errorForm && <ErrorMessage>{errorForm}</ErrorMessage>}
         <FormButton type="submit">Submit</FormButton>
       </FormRegister>
     </ConteinerForm>
