@@ -36,7 +36,6 @@ export const Contacts = () => {
           </ConteineInfo>
           <DeletButton
             onClick={() => {
-              console.log(elem);
               disPatch(serviceDeletContact(elem._id));
               disPatch(serviceGetContactsApi());
             }}

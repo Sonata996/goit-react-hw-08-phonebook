@@ -8,7 +8,6 @@ import { InputFilter } from 'components/InputFilter/InputFilter';
 import { ConteinerLoader } from 'components/App/App.styled';
 import { Loader } from 'components/Loader/Loader';
 import { ConteinetContact, Title } from './Conatct.styled';
-import { WindowDelet } from 'components/WindowDelet/WindowDelet';
 // import { useLocation} from "react-router-dom";
 
 export default function ContactPage() {
@@ -21,7 +20,6 @@ export default function ContactPage() {
   return (
     <ConteinetContact>
       <Title>Phonebook</Title>
-      <WindowDelet />
 
       <InputName />
 

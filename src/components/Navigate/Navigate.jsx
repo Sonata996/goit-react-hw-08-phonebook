@@ -7,7 +7,7 @@ import {
   NoLogiNContainer,
   HomeConteiner,
 } from './Navigate.styled.js';
-import { UserMenu } from 'components/UserMenu/UserMenu.js';
+import { UserMenu } from 'components/UserMenu/UserMenu.jsx';
 
 export const Navigate = () => {
   const getIsLoggedIn = useSelector(isLoggedIn);
