@@ -1,8 +1,8 @@
 import React from 'react';
-import { Formik, Field, Form } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Notiflix from 'notiflix';
-import { ConteinerLabel, FormButton } from './InputName.styled';
+import { ConteinerLabel, FormButton, Input } from './InputName.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { servicePostContact } from 'serviceApi/serviceApi';
 import { getContact } from 'redux/tasks/selectors';
@@ -51,13 +51,13 @@ export const InputName = ({ onCangeName }) => {
         <Form>
           <ConteinerLabel>
             <label htmlFor="name">Name</label>
-            <Field id="name" name="name" placeholder="Enter a name" />
+            <Input id="name" name="name" placeholder="Enter a name" />
             {errors.name && touched.name ? <div>{errors.name}</div> : null}
           </ConteinerLabel>
 
           <ConteinerLabel>
             <label htmlFor="phone">Number</label>
-            <Field type="tel" name="phone" />
+            <Input type="tel" name="phone" />
             {errors.phone && touched.phone ? <div>{errors.phone}</div> : null}
           </ConteinerLabel>
 

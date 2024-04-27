@@ -39,3 +39,10 @@ export const DeletButton = styled.button`
   top: 0;
   right: 5px;
 `;
+
+export const NoContacts = styled.h3`
+  width: 250px;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+`;

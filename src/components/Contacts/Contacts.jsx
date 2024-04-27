@@ -5,6 +5,7 @@ import {
   DeletButton,
   ConteineInfo,
   BorderIcon,
+  NoContacts,
 } from './contacts.styled';
 import { useSelector } from 'react-redux';
 import { FaUser } from 'react-icons/fa';
@@ -21,29 +22,36 @@ export const Contacts = () => {
     elem => elem && elem.name.toLowerCase().includes(filter)
   );
 
+  console.log(contactsList.length);
   const disPatch = useDispatch();
   return (
-    <ContactList>
-      {contactsList.map(elem => (
-        <ElemList key={elem._id}>
-          <ConteineInfo>
-            <BorderIcon>
-              <FaUser size="40px" />
-            </BorderIcon>
+    <>
+      {contactsList.length !== 0 ? (
+        <ContactList>
+          {contactsList.map(elem => (
+            <ElemList key={elem._id}>
+              <ConteineInfo>
+                <BorderIcon>
+                  <FaUser size="40px" />
+                </BorderIcon>
 
-            <p>{elem.name}:</p>
-            <p>{elem.phone}</p>
-          </ConteineInfo>
-          <DeletButton
-            onClick={() => {
-              disPatch(serviceDeletContact(elem._id));
-              disPatch(serviceGetContactsApi());
-            }}
-          >
-            Delete
-          </DeletButton>
-        </ElemList>
-      ))}
-    </ContactList>
+                <p>{elem.name}:</p>
+                <p>{elem.phone}</p>
+              </ConteineInfo>
+              <DeletButton
+                onClick={() => {
+                  disPatch(serviceDeletContact(elem._id));
+                  disPatch(serviceGetContactsApi());
+                }}
+              >
+                Delete
+              </DeletButton>
+            </ElemList>
+          ))}
+        </ContactList>
+      ) : (
+        <NoContacts>You have no contacts yet</NoContacts>
+      )}
+    </>
   );
 };
