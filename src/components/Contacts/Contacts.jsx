@@ -26,7 +26,7 @@ export const Contacts = () => {
   const disPatch = useDispatch();
   return (
     <>
-      {contactsList.length !== 0 ? (
+      {contacts.length !== 0 ? (
         <ContactList>
           {contactsList.map(elem => (
             <ElemList key={elem._id}>
